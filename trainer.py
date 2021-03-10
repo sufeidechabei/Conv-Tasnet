@@ -232,7 +232,7 @@ class Trainer(object):
             self.nnet.eval()
             for i in range(len(dataset)):
                 input = dataset.__getitem__(i)
-                mix = np.expand_dims(input[0], axis=0) / MAX_INT16 # 1 * channel * length
+                mix = np.expand_dims(input[0], axis=0)# 1 * channel * length
                 ref = input[3] * MAX_INT16
                 raw = th.tensor(mix, dtype=th.float32, device=self.gpuid[0])
                 spks = self.nnet(raw)
